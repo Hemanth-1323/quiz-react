@@ -93,8 +93,14 @@ export default function App() {
     0
   );
 
-  useEffect(function () {
+  /*   useEffect(function () {
     fetch("http://localhost:9000/questions")
+      .then((res) => res.json())
+      .then((data) => dispatch({ type: "dataReceived", payload: data }))
+      .catch((err) => dispatch({ type: "dataFailed" }));
+  }, []); */
+  useEffect(() => {
+    fetch("/api/questions")
       .then((res) => res.json())
       .then((data) => dispatch({ type: "dataReceived", payload: data }))
       .catch((err) => dispatch({ type: "dataFailed" }));
